@@ -4,8 +4,8 @@
 - [Foundryup](https://book.getfoundry.sh/getting-started/installation)
 
 ## Usage
-- `git clone `
-- `cd custom-rewards`
+- `git clone https://github.com/Web3-Certifier/custom-reward.git`
+- `cd custom-reward`
 - `cp .env.example .env`
 - change the values of the .env file
 - `make deploy-w3c-reward-celo`
