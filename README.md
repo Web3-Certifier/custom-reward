@@ -7,6 +7,8 @@
 - `git clone https://github.com/Web3-Certifier/custom-reward.git`
 - `cd custom-reward`
 - `cp .env.example .env`
-- change the values of the .env file
+- change the values of the .env file (at least ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, EXAM_ID)
+- change the src/CustomReward.sol file
+- `make build`
 - `make deploy-w3c-reward-celo`
 

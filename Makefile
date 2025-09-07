@@ -2,6 +2,9 @@
 
 -include .env
 
+# Build
+build:
+	@forge compile
 # Deploy and Verify the Custom Reward contract
 deploy-reward-sepolia:
 	@forge script script/DeployCustomReward.s.sol:DeployCustomReward --rpc-url https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY} --private-key $(DEPLOYER_PRIVATE_KEY) --broadcast --verify --etherscan-api-key $(ETHERSCAN_API_KEY) --optimizer-runs 1 --via-ir -vvvv
