@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { ICustomReward } from "./interfaces/ICustomReward.sol";
+import { ICustomReward } from "../interfaces/ICustomReward.sol";
 
 contract CustomReward is ICustomReward {
     function isEligible(address /* user */) external pure returns (bool) {
