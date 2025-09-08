@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {CustomReward} from "../src/CustomReward.sol";
-import {Script, console} from "forge-std/Script.sol";
+import {Script, console} from "lib/forge-std/src/Script.sol";
 
 contract DeployCustomReward is Script {
     function run() external returns (address) {
