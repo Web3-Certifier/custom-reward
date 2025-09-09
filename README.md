@@ -1,14 +1,15 @@
-## Create a reward on Web3 Certifier with custom eligibility criteria and reward amount
+## About
+Use this repository to create a reward for your Web3 Certifier exam with custom eligibility criteria and reward amount for each user. Users that pass your exam should also satisfy the custom eligibility criteria. The amount of tokens that they get can also be customized.
 
 ## Requirements
 - [Foundryup](https://book.getfoundry.sh/getting-started/installation)
+- You must have created an exam on [Web3 Certifier](https://web3certifier.com)
 
 ## Usage
-- `git clone https://github.com/Web3-Certifier/custom-reward.git`
-- `cd custom-reward`
-- `cp .env.example .env`
-- change the values of the .env file (at least ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, EXAM_ID) (the DEPLOYER_PRIVATE_KEY should be the one that created the exam)
-- change the src/CustomReward.sol file
-- `make build`
-- `make deploy-w3c-reward-celo`
-
+1. Run the following command on linux terminal 
+```bash
+git clone https://github.com/Web3-Certifier/custom-reward.git; cd custom-reward; cp .env.example .env
+```
+2. Change the values of the `.env` file (change at least ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, EXAM_ID) (the DEPLOYER_PRIVATE_KEY should be the one that created the exam)
+3. Modify the `src/CustomReward.sol` file
+4. Run `make build; make deploy-w3c-reward-celo`
