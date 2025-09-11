@@ -9,11 +9,6 @@ import { ICouncil } from "./interfaces/ICouncil.sol";
  * is: number of correct answers * number of votes that they have
  */
 contract CustomReward is ICustomReward {
-    function isEligible(address /* user */) external pure returns (bool) {
-        return true;
-    }
-
-    // return 0 to use default reward amount
     function getCustomRewardAmountForUser(
         address user,
         uint256 numberOfCorrectAnswers,
@@ -21,7 +16,7 @@ contract CustomReward is ICustomReward {
         uint256 /* s_rewardAmountPerCorrectAnswer */
     ) external view returns (uint256){
         // set bounds for reward amount
-        uint256 minRewardAmount = 1;  // not 0 because 0 is the default reward amount
+        uint256 minRewardAmount = 1;
         uint256 maxRewardAmount = 10000 * 1e18;  // ~$1
         
         // get how many votes a user has allocated

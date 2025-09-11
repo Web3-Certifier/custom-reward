@@ -1,5 +1,5 @@
 ## About
-Use this repository to create a reward for your Web3 Certifier exam with custom eligibility criteria and reward amount for each user. Users that pass your exam should also satisfy the custom eligibility criteria. The amount of tokens that they get can also be customized.
+Use this repository to create a reward for your Web3 Certifier exam with custom reward amount for each user. Users that pass your exam will get rewarded according to the formula that you define.
 
 ## Requirements
 - [Foundryup](https://book.getfoundry.sh/getting-started/installation)
