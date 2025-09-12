@@ -7,9 +7,9 @@ contract CustomReward is ICustomReward {
     function getCustomRewardAmountForUser(
         address /* user */,
         uint256 numberOfCorrectAnswers,
-        uint256 s_rewardAmountPerPerson,
-        uint256 /* s_rewardAmountPerCorrectAnswer */
+        uint256 /* s_rewardAmountPerPerson */,
+        uint256 s_rewardAmountPerCorrectAnswer
     ) external pure returns (uint256){
-        return numberOfCorrectAnswers * s_rewardAmountPerPerson;
+        return numberOfCorrectAnswers * s_rewardAmountPerCorrectAnswer;
     }
 }

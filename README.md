@@ -13,3 +13,6 @@ git clone https://github.com/Web3-Certifier/custom-reward.git; cd custom-reward;
 2. Change the values of the `.env` file (change at least ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, EXAM_ID) (the DEPLOYER_PRIVATE_KEY should be the one that created the exam)
 3. Modify the `src/CustomReward.sol` file
 4. Run `make build; make deploy-w3c-reward-celo`
+
+## Test
+Add a test file on `/test/Examples/` directory and run `make test`

@@ -11,13 +11,13 @@ import { IStakingRewards } from "./interfaces/IStakingRewards.sol";
 contract CustomReward is ICustomReward {
     function getCustomRewardAmountForUser(
         address user,
-        uint256 numberOfCorrectAnswers,
+        uint256 /* numberOfCorrectAnswers */,
         uint256 s_rewardAmountPerPerson,
         uint256 /* s_rewardAmountPerCorrectAnswer */
     ) external view returns (uint256){
         // check if user has staked
         bool hasStaked = IStakingRewards(0x799a23dA264A157Db6F9c02BE62F82CE8d602A45).balanceOf(user) > 0;
         // if user has staked, return the reward amount
-        return hasStaked ? numberOfCorrectAnswers * s_rewardAmountPerPerson : 0;
+        return hasStaked ? s_rewardAmountPerPerson : 0;
     }
 }
