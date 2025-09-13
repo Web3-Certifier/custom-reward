@@ -3,7 +3,7 @@ Use this repository to create a reward for your Web3 Certifier exam with custom 
 
 ## Requirements
 - [Foundryup](https://book.getfoundry.sh/getting-started/installation)
-- You must have created an exam on [Web3 Certifier](https://web3certifier.com)
+- You must have created an exam on [Web3 Certifier](https://web3certifier.com). Make sure you include information about custom reward functionality at the description of the exam.
 
 ## Usage
 1. Run the following command on linux terminal 
