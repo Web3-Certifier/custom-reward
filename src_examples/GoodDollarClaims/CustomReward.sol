@@ -3,22 +3,14 @@ pragma solidity ^0.8.24;
 
 import { ICustomReward } from "../../interfaces/ICustomReward.sol";
 
-struct Allocation {
-    address[] accounts;
-    uint128[] amounts;
-}
-
-interface ICouncil {
-    function getAllocation(address _member)
-        external
-        view
-    returns (Allocation memory allocation, uint256 sum, uint256 balance);
+interface IUBISchemeV2 {
+    function totalClaimsPerUser(address user) external view returns (uint256 totalClaims);
 }
 
 /**
- * @title CustomReward for GoodDollar Funding Round 2 voters
+ * @title CustomReward for GoodDollar Academy exam
  * @notice Users that pass the exam are eligible for rewards but the amount they get
- * is: number of correct answers * number of votes that they have
+ * is: number of correct answers * number of times they have claimed
  */
 contract CustomReward is ICustomReward {
     function getCustomRewardAmountForUser(
@@ -28,15 +20,14 @@ contract CustomReward is ICustomReward {
         uint256 /* s_rewardAmountPerCorrectAnswer */
     ) external view returns (uint256){
         // set bounds for reward amount
-        uint256 minRewardAmount = 1;
+        uint256 minRewardAmount = 1000 * 1e18;  // ~$0.1
         uint256 maxRewardAmount = 10000 * 1e18;  // ~$1
         
-        // get how many votes a user has allocated
-        (, uint256 allocatedVotes, ) = ICouncil(0xA4c44743582208E7e4207d5947c87AD1a0E70Aa0).getAllocation(user);
+        // get how many times a user has voted
+        uint256 totalClaims = IUBISchemeV2(0x43d72Ff17701B2DA814620735C39C620Ce0ea4A1).totalClaimsPerUser(user);
 
-        uint256 rewardAmount = numberOfCorrectAnswers * allocatedVotes * 1e18;
+        uint256 rewardAmount = minRewardAmount + (numberOfCorrectAnswers * totalClaims * 10 * 1e18);
 
-        if (rewardAmount < minRewardAmount) return minRewardAmount;
         if (rewardAmount > maxRewardAmount) return maxRewardAmount;
         return rewardAmount;
     }

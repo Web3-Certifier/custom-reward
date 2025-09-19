@@ -2,7 +2,10 @@
 pragma solidity ^0.8.24;
 
 import { ICustomReward } from "../../interfaces/ICustomReward.sol";
-import { IStakingRewards } from "./interfaces/IStakingRewards.sol";
+
+interface IStakingRewards {
+    function balanceOf(address account) external view returns (uint256);
+}
 
 /**
  * @title CustomReward for Ubeswap exams
