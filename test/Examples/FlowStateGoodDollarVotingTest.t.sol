@@ -19,7 +19,7 @@ contract FlowStateGoodDollarVotingTest is Test {
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
         numberOfCorrectAnswers: 5,
-        expectedRewardAmount: 5 * 50 * 1e18}
+        expectedRewardAmount: 5 * 60 * 1e18}
     );
     // this user has not voted
     User user2 = User({

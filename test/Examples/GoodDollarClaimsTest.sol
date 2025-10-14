@@ -15,11 +15,11 @@ contract GoodDollarClaimsTest is Test {
     uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18;
     
     CustomReward customReward;
-    // this user has claimed 21 times
+    // this user has claimed 23 times
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
         numberOfCorrectAnswers: 5,
-        expectedRewardAmount: 1000e18 + 5 * 21 * 10 * 1e18}
+        expectedRewardAmount: 1000e18 + 5 * 23 * 10 * 1e18}
     );
     // this user has not claimed, gets min reward
     User user2 = User({
