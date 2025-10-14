@@ -18,13 +18,13 @@ contract UbeswapTest is Test {
     // this user has staked
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
-        numberOfCorrectAnswers: 5e18,
+        numberOfCorrectAnswers: 5,
         expectedRewardAmount: REWARD_AMOUNT_PER_PERSON}
     );
     // this user has not staked
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6e18,
+        numberOfCorrectAnswers: 6,
         expectedRewardAmount: 0
     });
     

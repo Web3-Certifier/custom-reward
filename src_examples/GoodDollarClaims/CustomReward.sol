@@ -26,7 +26,7 @@ contract CustomReward is ICustomReward {
         // get how many times a user has voted
         uint256 totalClaims = IUBISchemeV2(0x43d72Ff17701B2DA814620735C39C620Ce0ea4A1).totalClaimsPerUser(user);
 
-        uint256 rewardAmount = minRewardAmount + (numberOfCorrectAnswers * totalClaims * 10);
+        uint256 rewardAmount = minRewardAmount + (numberOfCorrectAnswers * totalClaims * 10 * 1e18);
 
         if (rewardAmount > maxRewardAmount) return maxRewardAmount;
         return rewardAmount;

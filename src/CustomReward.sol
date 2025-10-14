@@ -10,6 +10,6 @@ contract CustomReward is ICustomReward {
         uint256 /* s_rewardAmountPerPerson */,
         uint256 s_rewardAmountPerCorrectAnswer
     ) external pure returns (uint256){
-        return numberOfCorrectAnswers * s_rewardAmountPerCorrectAnswer / 1e18;
+        return numberOfCorrectAnswers * s_rewardAmountPerCorrectAnswer;
     }
 }

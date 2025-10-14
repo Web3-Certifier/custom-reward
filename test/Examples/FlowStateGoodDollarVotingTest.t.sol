@@ -15,16 +15,16 @@ contract FlowStateGoodDollarVotingTest is Test {
     uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18;
     
     CustomReward customReward;
-    // this user has allocated 50 votes
+    // this user has allocated 60 votes
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
-        numberOfCorrectAnswers: 5e18,
-        expectedRewardAmount: 5e18 * 60}
+        numberOfCorrectAnswers: 5,
+        expectedRewardAmount: 5 * 60 * 1e18 }
     );
     // this user has not voted
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6e18,
+        numberOfCorrectAnswers: 6,
         expectedRewardAmount: 1
     });
     

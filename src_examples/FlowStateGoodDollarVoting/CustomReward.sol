@@ -34,7 +34,7 @@ contract CustomReward is ICustomReward {
         // get how many votes a user has allocated
         (, uint256 allocatedVotes, ) = ICouncil(0xA4c44743582208E7e4207d5947c87AD1a0E70Aa0).getAllocation(user);
 
-        uint256 rewardAmount = numberOfCorrectAnswers * allocatedVotes;
+        uint256 rewardAmount = numberOfCorrectAnswers * allocatedVotes * 1e18;
 
         if (rewardAmount < minRewardAmount) return minRewardAmount;
         if (rewardAmount > maxRewardAmount) return maxRewardAmount;

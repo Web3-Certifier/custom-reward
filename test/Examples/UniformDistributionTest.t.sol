@@ -17,12 +17,12 @@ contract UniformDistributionTest is Test {
     CustomReward customReward;
     User user1 = User({
         userAddress: address(1),
-        numberOfCorrectAnswers: 5e18,
+        numberOfCorrectAnswers: 5,
         expectedRewardAmount: REWARD_AMOUNT_PER_PERSON * 1e18 / REWARD_AMOUNT_PER_CORRECT_ANSWER}
     );
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6e18,
+        numberOfCorrectAnswers: 6,
         expectedRewardAmount: REWARD_AMOUNT_PER_PERSON * 1e18 / REWARD_AMOUNT_PER_CORRECT_ANSWER
     });
     
