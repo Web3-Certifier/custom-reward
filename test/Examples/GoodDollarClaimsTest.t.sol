@@ -18,13 +18,13 @@ contract GoodDollarClaimsTest is Test {
     // this user has claimed 23 times
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
-        numberOfCorrectAnswers: 5,
-        expectedRewardAmount: 1000e18 + 5 * 23 * 10 * 1e18}
+        numberOfCorrectAnswers: 5e18,
+        expectedRewardAmount: 1000e18 + 5e18 * 23 * 10}
     );
     // this user has not claimed, gets min reward
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6,
+        numberOfCorrectAnswers: 6e18,
         expectedRewardAmount: 1000e18
     });
     

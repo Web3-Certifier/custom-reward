@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { CustomReward } from "../../src_examples/FlowStateGoodDollarVoting/CustomReward.sol";
+import { CustomReward } from "../../src_examples/UniformDistribution/CustomReward.sol";
 import { Test, console2 } from "lib/forge-std/src/Test.sol";
 
 struct User {
@@ -10,22 +10,20 @@ struct User {
     uint256 expectedRewardAmount;
 }
 
-contract FlowStateGoodDollarVotingTest is Test {
-    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON") * 1e18;
-    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18;
+contract UniformDistributionTest is Test {
+    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON");
+    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER");
     
     CustomReward customReward;
-    // this user has allocated 50 votes
     User user1 = User({
-        userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
+        userAddress: address(1),
         numberOfCorrectAnswers: 5e18,
-        expectedRewardAmount: 5e18 * 60}
+        expectedRewardAmount: REWARD_AMOUNT_PER_PERSON * 1e18 / REWARD_AMOUNT_PER_CORRECT_ANSWER}
     );
-    // this user has not voted
     User user2 = User({
         userAddress: address(2),
         numberOfCorrectAnswers: 6e18,
-        expectedRewardAmount: 1
+        expectedRewardAmount: REWARD_AMOUNT_PER_PERSON * 1e18 / REWARD_AMOUNT_PER_CORRECT_ANSWER
     });
     
     function setUp() public {

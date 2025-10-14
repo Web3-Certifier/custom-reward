@@ -19,8 +19,8 @@ contract DeployCustomRewardOnW3C is Script {
         address reward = IRewardFactory(rewardFactory).createReward(
             vm.envUint("EXAM_ID"),  // examId
             0,  // initialRewardAmount
-            vm.envUint("REWARD_AMOUNT_PER_PERSON") * 1e18,  // rewardAmountPerPerson
-            vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18,  // rewardAmountPerCorrectAnswer
+            vm.envUint("REWARD_AMOUNT_PER_PERSON"),  // rewardAmountPerPerson
+            vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER"),  // rewardAmountPerCorrectAnswer
             rewardTokenAddress,  // tokenAddress
             customReward  // customReward
         );

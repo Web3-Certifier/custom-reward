@@ -11,20 +11,20 @@ struct User {
 }
 
 contract UbeswapTest is Test {
-    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON") * 1e18;
-    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18;
+    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON");
+    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER");
     
     CustomReward customReward;
     // this user has staked
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
-        numberOfCorrectAnswers: 5,
+        numberOfCorrectAnswers: 5e18,
         expectedRewardAmount: REWARD_AMOUNT_PER_PERSON}
     );
     // this user has not staked
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6,
+        numberOfCorrectAnswers: 6e18,
         expectedRewardAmount: 0
     });
     

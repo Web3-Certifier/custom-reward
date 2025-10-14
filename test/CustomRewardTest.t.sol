@@ -11,18 +11,18 @@ struct User {
 }
 
 contract CustomRewardTest is Test {
-    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON") * 1e18;
-    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER") * 1e18;
+    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON");
+    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER");
     
     CustomReward customReward;
     User user1 = User({
         userAddress: address(1),
-        numberOfCorrectAnswers: 5,
+        numberOfCorrectAnswers: 5e18,
         expectedRewardAmount: 5 * REWARD_AMOUNT_PER_CORRECT_ANSWER}
     );
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6,
+        numberOfCorrectAnswers: 6e18,
         expectedRewardAmount: 6 * REWARD_AMOUNT_PER_CORRECT_ANSWER
     });
     
