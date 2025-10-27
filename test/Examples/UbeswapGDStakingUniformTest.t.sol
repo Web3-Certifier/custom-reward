@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { CustomReward } from "../../src_examples/HoldGDUniform/CustomReward.sol";
+import { CustomReward } from "../../src_examples/UbeswapGDStakingUniform/CustomReward.sol";
 import { Test, console2 } from "lib/forge-std/src/Test.sol";
 
 struct User {
@@ -10,18 +10,18 @@ struct User {
     uint256 expectedRewardAmount;
 }
 
-contract HoldGDUniformTest is Test {
+contract UbeswapTest is Test {
     uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON");
     uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER");
     
     CustomReward customReward;
-    // user holds more than 500 G$ tokens
+    // this user has staked
     User user1 = User({
         userAddress: 0x6EDbfb0eA84d0eb820071932eAeBb19a8686E409,
         numberOfCorrectAnswers: 5,
         expectedRewardAmount: REWARD_AMOUNT_PER_PERSON * 1e18 / REWARD_AMOUNT_PER_CORRECT_ANSWER
     });
-    // user does not hold G$ tokens
+    // this user has not staked
     User user2 = User({
         userAddress: address(2),
         numberOfCorrectAnswers: 6,

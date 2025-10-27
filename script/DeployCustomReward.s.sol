@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.24;
 
-import {CustomReward} from "../src/CustomReward.sol";
+import {CustomReward} from "../src_examples/UbeswapGDStakingUniform/CustomReward.sol";
 import {Script, console} from "lib/forge-std/src/Script.sol";
 
 contract DeployCustomReward is Script {
