@@ -5,9 +5,10 @@ interface IRewardFactory {
     function createReward(
         uint256 examId,
         uint256 initialRewardAmount,
-        uint256 rewardAmountPerPerson,
-        uint256 rewardAmountPerCorrectAnswer,
-        address tokenAddress,
-        address customReward
+        address rewardToken,
+        DistributionType distributionType,
+        uint256 distributionParameter,  // has 18 decimals
+        EligibilityCriteria eligibilityCriteria,
+        address eligibilityParameter
     ) external returns (address);
 }
