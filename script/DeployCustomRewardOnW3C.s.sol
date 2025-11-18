@@ -12,17 +12,18 @@ contract DeployCustomRewardOnW3C is Script {
         console.log("Custom Reward Contract deployed at: ", customReward);
         address rewardFactory = block.chainid == 11155111 ? vm.envAddress("SEPOLIA_REWARD_FACTORY_PROXY_ADDRESS")
             : block.chainid == 42220 ? vm.envAddress("CELO_REWARD_FACTORY_PROXY_ADDRESS")
-            : vm.envAddress("ARBITRUM_REWARD_FACTORY_PROXY_ADDRESS");
+            : address(0);
         address rewardTokenAddress = block.chainid == 11155111 ? 0x779877A7B0D9E8603169DdbD7836e478b4624789  // link token
             : block.chainid == 42220 ? 0x62B8B11039FcfE5aB0C56E502b1C372A3d2a9c7A  // G$ token
-            : 0xaf88d065e77c8cC2239327C5EDb3A432268e5831;  // USDC token
+            : address(0);
         address reward = IRewardFactory(rewardFactory).createReward(
             vm.envUint("EXAM_ID"),  // examId
             0,  // initialRewardAmount
-            vm.envUint("REWARD_AMOUNT_PER_PERSON"),  // rewardAmountPerPerson
-            vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER"),  // rewardAmountPerCorrectAnswer
             rewardTokenAddress,  // tokenAddress
-            customReward  // customReward
+            IRewardFactory.DistributionType.CUSTOM,  // distributionType
+            vm.envUint("DISTRIBUTION_PARAMETER"),  // distributionParameter
+            IRewardFactory.EligibilityCriteria.CUSTOM,  // eligibilityCriteria
+            customReward  // eligibilityParameter
         );
         console.log("W3C Reward Contract deployed at: ", reward);
         vm.stopBroadcast();
