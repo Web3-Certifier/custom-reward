@@ -3,53 +3,46 @@ pragma solidity ^0.8.24;
 
 import { CustomReward } from "../src/CustomReward.sol";
 import { Test, console2 } from "lib/forge-std/src/Test.sol";
-
-struct User {
-    address userAddress;
-    uint256 numberOfCorrectAnswers;
-    uint256 expectedRewardAmount;
-}
+import { User } from "./structs/User.sol";
 
 contract CustomRewardTest is Test {
-    uint256 REWARD_AMOUNT_PER_PERSON = vm.envUint("REWARD_AMOUNT_PER_PERSON");
-    uint256 REWARD_AMOUNT_PER_CORRECT_ANSWER = vm.envUint("REWARD_AMOUNT_PER_CORRECT_ANSWER");
+    uint256 DISTRIBUTION_PARAMETER = vm.envUint("DISTRIBUTION_PARAMETER");
     
-    CustomReward customReward;
     User user1 = User({
         userAddress: address(1),
-        numberOfCorrectAnswers: 5,
-        expectedRewardAmount: 5 * REWARD_AMOUNT_PER_CORRECT_ANSWER}
-    );
+        expectedEligible: true,
+        expectedRewardAmount: DISTRIBUTION_PARAMETER
+    });
     User user2 = User({
         userAddress: address(2),
-        numberOfCorrectAnswers: 6,
-        expectedRewardAmount: 6 * REWARD_AMOUNT_PER_CORRECT_ANSWER
+        expectedEligible: true,
+        expectedRewardAmount: DISTRIBUTION_PARAMETER
     });
     
+    CustomReward customReward;
+
     function setUp() public {
         customReward = new CustomReward();
     }
 
     function testRewardAmountsAreAsExpected() public view {
-        uint256 actualRewardAmount1 = customReward.getCustomRewardAmountForUser(
-            user1.userAddress,
-            user1.numberOfCorrectAnswers,
-            REWARD_AMOUNT_PER_PERSON,
-            REWARD_AMOUNT_PER_CORRECT_ANSWER
-        );
+        bool actualEligible1 = customReward.isEligible(user1.userAddress);
+        bool actualEligible2 = customReward.isEligible(user2.userAddress);
 
-        uint256 actualRewardAmount2 = customReward.getCustomRewardAmountForUser(
-            user2.userAddress,
-            user2.numberOfCorrectAnswers,
-            REWARD_AMOUNT_PER_PERSON,
-            REWARD_AMOUNT_PER_CORRECT_ANSWER
-        );
+        uint256 actualRewardAmount1 = customReward.rewardAmount(user1.userAddress, DISTRIBUTION_PARAMETER);
+        uint256 actualRewardAmount2 = customReward.rewardAmount(user2.userAddress, DISTRIBUTION_PARAMETER);
 
+        console2.log("actualEligible1:   ", actualEligible1);
+        console2.log("expectedEligible1: ", user1.expectedEligible);
+        console2.log("actualEligible2:   ", actualEligible2);
+        console2.log("expectedEligible2: ", user2.expectedEligible);
         console2.log("actualRewardAmount1:   ", actualRewardAmount1);
         console2.log("expectedRewardAmount1: ", user1.expectedRewardAmount);
         console2.log("actualRewardAmount2:   ", actualRewardAmount2);
         console2.log("expectedRewardAmount2: ", user2.expectedRewardAmount);
         
+        assert(actualEligible1 == user1.expectedEligible);
+        assert(actualEligible2 == user2.expectedEligible);
         assert(actualRewardAmount1 == user1.expectedRewardAmount);
         assert(actualRewardAmount2 == user2.expectedRewardAmount);
     }
