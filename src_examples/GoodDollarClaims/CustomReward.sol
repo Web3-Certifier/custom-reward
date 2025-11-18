@@ -13,22 +13,21 @@ interface IUBISchemeV2 {
  * is: number of correct answers * number of times they have claimed
  */
 contract CustomReward is ICustomReward {
-    function getCustomRewardAmountForUser(
-        address user,
-        uint256 numberOfCorrectAnswers,
-        uint256 /* s_rewardAmountPerPerson */,
-        uint256 /* s_rewardAmountPerCorrectAnswer */
-    ) external view returns (uint256){
+    function isEligible(address /*  user */) external pure returns (bool) {
+        return true;
+    }
+
+    function rewardAmount(address user, uint256 /* distributionParameter */) external view returns (uint256) {
         // set bounds for reward amount
         uint256 minRewardAmount = 1000 * 1e18;  // ~$0.1
         uint256 maxRewardAmount = 10000 * 1e18;  // ~$1
         
-        // get how many times a user has voted
+        // get how many times a user has claimed
         uint256 totalClaims = IUBISchemeV2(0x43d72Ff17701B2DA814620735C39C620Ce0ea4A1).totalClaimsPerUser(user);
 
-        uint256 rewardAmount = minRewardAmount + (numberOfCorrectAnswers * totalClaims * 10 * 1e18);
+        uint256 userRewardAmount = minRewardAmount + (totalClaims * 100 * 1e18);
 
-        if (rewardAmount > maxRewardAmount) return maxRewardAmount;
-        return rewardAmount;
+        if (userRewardAmount > maxRewardAmount) return maxRewardAmount;
+        return userRewardAmount;
     }
 }
