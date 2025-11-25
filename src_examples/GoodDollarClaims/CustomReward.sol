@@ -9,15 +9,23 @@ interface IUBISchemeV2 {
 
 /**
  * @title CustomReward for GoodDollar Academy exam
- * @notice Users that pass the exam are eligible for rewards but the amount they get
+ * @notice Users that pass the exam are eligible for rewards and the amount they get
  * is: number of correct answers * number of times they have claimed
  */
 contract CustomReward is ICustomReward {
+    function name() external pure returns (string memory) {
+        return "GoodDollar Claims";
+    }
+
+    function description() external pure returns (string memory) {
+        return "Users that pass the exam are eligible for rewards and the amount they get is: number of correct answers * number of times they have claimed";
+    }
+
     function isEligible(address /*  user */) external pure returns (bool) {
         return true;
     }
 
-    function rewardAmount(address user, uint256 /* distributionParameter */) external view returns (uint256) {
+    function rewardAmountForUser(address user, uint256 /* distributionParameter */) external view returns (uint256) {
         // set bounds for reward amount
         uint256 minRewardAmount = 1000 * 1e18;  // ~$0.1
         uint256 maxRewardAmount = 10000 * 1e18;  // ~$1
