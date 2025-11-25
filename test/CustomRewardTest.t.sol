@@ -29,8 +29,8 @@ contract CustomRewardTest is Test {
         bool actualEligible1 = customReward.isEligible(user1.userAddress);
         bool actualEligible2 = customReward.isEligible(user2.userAddress);
 
-        uint256 actualRewardAmount1 = customReward.rewardAmount(user1.userAddress, DISTRIBUTION_PARAMETER);
-        uint256 actualRewardAmount2 = customReward.rewardAmount(user2.userAddress, DISTRIBUTION_PARAMETER);
+        uint256 actualRewardAmount1 = customReward.rewardAmountForUser(user1.userAddress, DISTRIBUTION_PARAMETER);
+        uint256 actualRewardAmount2 = customReward.rewardAmountForUser(user2.userAddress, DISTRIBUTION_PARAMETER);
 
         console2.log("actualEligible1:   ", actualEligible1);
         console2.log("expectedEligible1: ", user1.expectedEligible);

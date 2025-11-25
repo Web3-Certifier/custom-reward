@@ -18,11 +18,10 @@ contract DeployCustomRewardOnW3C is Script {
             : address(0);
         address reward = IRewardFactory(rewardFactory).createReward(
             vm.envUint("EXAM_ID"),  // examId
-            0,  // initialRewardAmount
             rewardTokenAddress,  // tokenAddress
             IRewardFactory.DistributionType.CUSTOM,  // distributionType
             vm.envUint("DISTRIBUTION_PARAMETER"),  // distributionParameter
-            IRewardFactory.EligibilityCriteria.CUSTOM,  // eligibilityCriteria
+            IRewardFactory.EligibilityType.CUSTOM,  // eligibilityType
             customReward  // eligibilityParameter
         );
         console.log("W3C Reward Contract deployed at: ", reward);
