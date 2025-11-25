@@ -17,4 +17,4 @@ git clone https://github.com/Web3-Certifier/custom-reward.git; cd custom-reward;
 ## Test
 Add a test file on `/test/Examples/` directory and run `make test`
 
-Note: test with exam id 37
+Note: test with exam id 37 on Celo and id 69 on Sepolia
