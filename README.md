@@ -17,4 +17,12 @@ git clone https://github.com/Web3-Certifier/custom-reward.git; cd custom-reward;
 ## Test
 Add a test file on `/test/Examples/` directory and run `make test`
 
-Note: test with exam id 37/40 on Celo and id 69 on Sepolia
+<br>
+<br>
+<hr>
+
+#### Note: test with exam id 37/40 on Celo and id 69 on Sepolia  
+#### Deployed custom rewards on Celo:  
+Default: 0x7b57d5e33af49722798589f4cf9783eaee9cbd56  
+GoodDollarClaims: 0x7e64e4B4Bc8289491AE75147CD6F43153c137396  
+UbeswapGDStaking: 0xe9f4409b7ff1F8B5D87f5DDB9BD75F0E6467Ba81
