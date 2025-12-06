@@ -16,8 +16,12 @@ contract CustomReward is ICustomReward {
         return "Ubeswap G$ Staking";
     }
 
-    function description() external pure returns (string memory) {
-        return "Eligibility critereia: Must have staked G$ on Ubeswap. Distribution type: Constant (can be overridden).";
+    function eligibilityDescription() external pure returns (string memory) {
+        return "Must have staked G$ on Ubeswap.";
+    }
+
+    function distributionDescription() external pure returns (string memory) {
+        return "Each user receives distributionParameter number of tokens.";
     }
 
     function isEligible(address user) external view returns (bool) {

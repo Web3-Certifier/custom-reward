@@ -17,8 +17,12 @@ contract CustomReward is ICustomReward {
         return "GoodDollar Claims";
     }
 
-    function description() external pure returns (string memory) {
-        return "Users that pass the exam are eligible for rewards and the amount they get is: number of correct answers * number of times they have claimed";
+    function eligibilityDescription() external pure returns (string memory) {
+        return "No extra eligibility criteria.";
+    }
+
+    function distributionDescription() external pure returns (string memory) {
+        return "Each user receives a reward based on how many times they have claimed. The reward amount is calculated as: 1,000 + number of times they have claimed * 100. The maximum amount is 10,000 tokens.";
     }
 
     function isEligible(address /*  user */) external pure returns (bool) {

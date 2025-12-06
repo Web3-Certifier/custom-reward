@@ -8,8 +8,12 @@ contract CustomReward is ICustomReward {
         return "Custom Reward Name";
     }
 
-    function description() external pure returns (string memory) {
-        return "Custom Reward Description";
+    function eligibilityDescription() external pure returns (string memory) {
+        return "No extra eligibility criteria.";
+    }
+
+    function distributionDescription() external pure returns (string memory) {
+        return "Each user receives distributionParameter number of tokens.";
     }
 
     function isEligible(address /* user */) external pure returns (bool) {
